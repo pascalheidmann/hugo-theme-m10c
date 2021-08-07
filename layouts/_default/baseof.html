@@ -1,14 +1,12 @@
 <!doctype html>
-<html lang="{{ .Site.LanguageCode | default " en-us" }}">
+<html lang="{{ .Site.LanguageCode | default "en-us" }}">
 <head>
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} // {{ .Site.Title }}{{ end }}</title>
-    <link rel="shortcut icon" href="{{ .Site.Params.favicon | default "
-    /favicon.ico" }}" />
+    <link rel="shortcut icon" href="{{ .Site.Params.favicon | default "/favicon.ico" }}"/>
     <meta charset="utf-8"/>
     {{ hugo.Generator }}
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="author" content="{{ .Site.Params.author | default " John Doe
-    " }}" />
+    <meta name="author" content="{{ .Site.Params.author | default "John Doe" }}" />
     <meta name="description"
           content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}"/>
     {{ $style := resources.Get "css/main.scss" | resources.ExecuteAsTemplate "css/main.scss" . | resources.ToCSS |
@@ -22,8 +20,9 @@
 </head>
 <body>
 <header class="app-header">
-    <a href="{{ .Site.BaseURL }}"><img class="app-header-avatar" src="{{ .Site.Params.avatar | default " avatar.jpg" |
-        relURL }}" alt="{{ .Site.Params.author | default "John Doe" }}" /></a>
+    <a href="{{ .Site.BaseURL }}"><img class="app-header-avatar"
+                                       src="{{ .Site.Params.avatar | default "avatar.jpg" | relURL }}"
+        alt="{{ .Site.Params.author | default "John Doe" }}"/></a>
     {{- with .Site.Menus.main }}
     <nav class="app-header-menu">
         {{- range $key, $item := . }}
@@ -34,8 +33,7 @@
         {{- end }}
     </nav>
     {{- end }}
-    <p>{{ .Site.Params.description | default "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula
-        turpis sit amet elit pretium." }}</p>
+    <p>{{ .Site.Params.description | default "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium." }}</p>
     {{- with .Site.Params.social }}
     <div class="app-header-social">
         {{ range . }}
