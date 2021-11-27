@@ -1,30 +1,33 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-  line-height: 1.6;
+    line-height: 1.6;
 }
 
 body {
-  margin: 0;
-  font-family: sans-serif;
-  background: $dark-color;
-  color: $light-color;
+    margin: 0;
+    font-family: sans-serif;
+    background: $dark-color;
+    color: $light-color;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: $lightest-color;
+    color: $lightest-color;
 }
 
-a {
-  color: $primary-color;
-  transition: color 0.35s;
-  text-decoration: none;
+a, a > * {
+    color: $primary-color;
+    transition: color 0.35s;
+    text-decoration: none;
 
-  &:hover {
-    color: $lightest-color;
-  }
+    &:hover, &:focus, &:active {
+        color: $lightest-color;
+        text-decoration-line: underline;
+        text-decoration-style: dashed;
+        text-decoration-color: $primary-color;
+    }
 }
 
 // Browsers seem to use a smaller default font-size with monospaced code
@@ -32,28 +35,29 @@ a {
 // small inline code-blocks in the middle of normal text (mainly because of
 // the very noticeable difference in x-height). This CSS corrects that problem.
 code {
-  font-family: monospace,monospace;
-  font-size: 1em;
-  color: rgba($light-color, .8);
+    font-family: monospace, monospace;
+    font-size: 1em;
+    color: rgba($light-color, .8);
 }
 
 pre {
-  font-size: 1rem;
-  line-height: 1.2em;
-  margin: 0;
-  overflow: auto;
+    font-size: 1rem;
+    line-height: 1.2em;
+    margin: 0;
+    overflow: auto;
 
-  // A larger monospaced block of text (that isn't mixed with normal text)
-  // generally looks heavier than normal text with the same font size. For this
-  // reason using a smaller monospaced font size makes sense in this situation.
-  code {
-    font-size: .8em;
-  }
+    // A larger monospaced block of text (that isn't mixed with normal text)
+    // generally looks heavier than normal text with the same font size. For this
+    // reason using a smaller monospaced font size makes sense in this situation.
+    code {
+        font-size: .8em;
+    }
 }
 
 ::selection {
-  background: rgba($light-color, .25);
+    background: rgba($light-color, .25);
 }
+
 ::-moz-selection {
-  background: rgba($light-color, .25);
+    background: rgba($light-color, .25);
 }
