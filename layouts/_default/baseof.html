@@ -46,5 +46,8 @@
     {{ .Content }}
     {{ end }}
 </main>
+{{- if .GitInfo }}
+<a style="font-size: small; color: grey; position: absolute" href="https://github.com/pascalheidmann/pascalheidmann.github.io/commit/{{ .GitInfo.Hash }}">Last commit: {{ .GitInfo.AbbreviatedHash }} {{.GitInfo.CommitDate}}</a>
+{{- end }}
 </body>
 </html>
