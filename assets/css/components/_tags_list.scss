@@ -4,7 +4,7 @@
 
 .tags-list-item {
   list-style: none;
-  padding: 0.4em 0;
+  padding: 0.4rem 0;
   &:not(:last-child) {
     border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
   }
@@ -19,7 +19,7 @@
   .tags-list-item {
     width: calc(50% - 1em);
     &:nth-child(even) {
-      margin-left: 1em;
+      margin-left: 1rem;
     }
     &:nth-last-child(2) {
       border: none;
