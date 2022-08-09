@@ -25,6 +25,7 @@ a, a > * {
     &:hover, &:focus, &:active {
         color: $lightest-color;
         text-decoration-line: underline;
+        text-underline-offset: .3rem;
         text-decoration-style: dashed;
         text-decoration-color: $primary-color;
     }
@@ -68,5 +69,11 @@ pre {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .body {
+        background-color: $darkest-color;
     }
 }

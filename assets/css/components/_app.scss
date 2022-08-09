@@ -1,6 +1,6 @@
 .app-header {
     padding: 2.5rem;
-    background: $darkest-color;
+    background-color: $darkest-color;
     text-align: center;
 }
 
@@ -16,11 +16,22 @@
 }
 
 .app-header-social {
-    font-size: 2rem;
     color: $lightest-color;
 
     a {
-        margin: 0 0.1em;
+        display: inline-block;
+        margin: 0.5em;
+        animation: filter .3s ease-in-out;
+
+        & > svg {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+
+        &:hover, &:active, &:focus {
+            text-decoration: none;
+            filter: drop-shadow(0 0 2px $primary-color);
+        }
     }
 }
 
@@ -36,5 +47,11 @@
     .app-container {
         max-width: 65rem;
         margin-left: 20rem;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .app-header {
+        background-color: #000;
     }
 }
