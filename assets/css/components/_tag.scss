@@ -5,11 +5,23 @@
     font-size: 1rem;
     border-radius: 0.2rem;
     white-space: nowrap;
-    background: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
     transition: color 0.35s, background 0.35s;
 
     &:hover {
         transition: color 0.25s, background 0.05s;
-        background: rgba(255, 255, 255, 0.3);
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+@media (prefers-contrast: more) {
+    .tag {
+        background: transparent;
+        border: 1px solid $primary-color;
+
+        &:hover {
+            background-color: $dark-color;
+            border-color: $lightest-color;
+        }
     }
 }
