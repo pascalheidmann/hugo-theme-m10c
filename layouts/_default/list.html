@@ -7,12 +7,14 @@
             <a class="posts-list-item-title" href="{{ .Permalink }}">{{ .Title }}</a>
             <span class="posts-list-item-description">
             {{ if ne (.PublishDate.Format "2006-01-02") "0001-01-01" }}
-            {{ partial "icon.html" (dict "ctx" $ "name" "calendar") }}
-            {{ .PublishDate.Format "Jan 2, 2006" }}
-            -
+                {{ partial "icon.html" (dict "ctx" $ "name" "calendar") }}
+                {{ .PublishDate.Format "Jan 2, 2006" }}
             {{ end }}
-            {{ partial "icon.html" (dict "ctx" $ "name" "clock") }}
-            {{ .ReadingTime }} min read
+            {{ if and .ReadingTime (ne (.PublishDate.Format "2006-01-02") "0001-01-01") }} - {{ end }}
+            {{ if .ReadingTime }}
+                {{ partial "icon.html" (dict "ctx" $ "name" "clock") }}
+                {{ .ReadingTime }} min read
+            {{ end }}
           </span>
         </li>
         {{ end }}
