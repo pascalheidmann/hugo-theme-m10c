@@ -56,10 +56,12 @@
     }
 
     .cv-links {
-        display: grid;
-        grid-template-columns: 1fr;
+        display: inline-grid;
+        grid-template-columns: max-content; /* size column by the widest link */
+        grid-auto-rows: auto;
         gap: 0.35rem;
         margin-top: 0.75rem;
+        justify-content: start;
     }
 
     .cv-links a {
@@ -71,6 +73,7 @@
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
+        white-space: nowrap; /* keep all links on one line so widths match */
         transition: background-color .15s ease, border-color .15s ease, color .15s ease, transform .05s ease;
     }
     .cv-links a:hover,
@@ -176,6 +179,115 @@
     }
     .skill-badge:focus:not(:focus-visible) {
         outline: none;
+    }
+
+    /* Print styles */
+    @page {
+        size: A4;
+        margin: 12mm;
+    }
+    @media print {
+        :root { color-scheme: light; }
+        html, body {
+            background: #ffffff !important;
+            color: #000 !important;
+        }
+
+        /* Use full page width for print */
+        .app-container {
+            max-width: none !important;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* Collapse to single column for print */
+        .cv-wrapper {
+            flex-direction: column !important;
+            gap: 0.75rem !important;
+        }
+        .cv-left, .cv-right {
+            flex: 0 0 auto !important;
+            max-width: 100% !important;
+        }
+
+        /* Remove card chrome; rely on divider instead */
+        .cv-card {
+            box-shadow: none !important;
+            border: 0 !important;
+            background: #fff !important;
+            color: #000 !important;
+        }
+        .cv-right .cv-card {
+            padding: 1.5rem !important;
+        }
+
+        /* Divider between left (profile) and right (content) sections */
+        .cv-right {
+            border-top: 2px solid #000 !important;
+            padding-top: 1rem !important;
+        }
+
+        /* Section spacing and headings */
+        .cv-section + .cv-section {
+            margin-top: 2rem !important;
+        }
+        .cv-section h2 {
+            font-size: 1.4rem !important;
+            border-bottom-color: #000 !important;
+        }
+
+        /* Avoid breaking within items */
+        .cv-item {
+            break-inside: avoid !important;
+            page-break-inside: avoid !important;
+        }
+
+        /* Avatar and pills contrast */
+        .cv-left .avatar {
+            border-color: #000 !important;
+        }
+        .skill-badge {
+            border-color: #000 !important;
+            background: #fff !important;
+            color: #000 !important;
+        }
+
+        /* Links: keep readable (no auto URL), equal width by longest link, centered */
+        .cv-links {
+            display: grid !important;
+            grid-template-columns: max-content !important;
+            grid-auto-rows: auto !important;
+            gap: 6pt !important;
+            justify-content: center !important; /* center the grid track */
+            margin: 0 auto !important;         /* center the container */
+        }
+        .cv-links a {
+            color: #000 !important;
+            border-color: #000 !important;
+            background: transparent !important;
+            text-decoration: none !important;
+            display: inline-flex !important;
+            white-space: nowrap !important;    /* prevent wrapping so widths match */
+            width: 100% !important;            /* fill the max-content track */
+            justify-content: center;           /* center icon+text within link */
+        }
+        .cv-links a::after {
+            content: "" !important;
+        }
+        /* Remove hover backgrounds in print context */
+        .cv-links a:hover,
+        .cv-links a:focus,
+        .cv-links a:focus-visible {
+            background: transparent !important;
+            border-color: #000 !important;
+            outline: none !important;
+        }
+
+        /* Hide GitInfo link in print */
+        a[href*="pascalheidmann.github.io/commit"] {
+            display: none !important;
+        }
     }
 </style>
 
